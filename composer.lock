@@ -4,8 +4,64 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ccf3b0ce8a7108a60ba85235a451ee45",
+    "content-hash": "752ea4cb76c62a8e2d20a1e0b5fa3bd5",
     "packages": [
+        {
+            "name": "asantibanez/laravel-eloquent-state-machines",
+            "version": "v2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/asantibanez/laravel-eloquent-state-machines.git",
+                "reference": "3ac7509499a41b95f968fa86749be9018b5b3597"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/asantibanez/laravel-eloquent-state-machines/zipball/3ac7509499a41b95f968fa86749be9018b5b3597",
+                "reference": "3ac7509499a41b95f968fa86749be9018b5b3597",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "javoscript/laravel-macroable-models": "^1.0",
+                "php": "^7.2|^7.3|^7.4"
+            },
+            "require-dev": {
+                "laravel/legacy-factories": "^1.0.4",
+                "orchestra/testbench": "^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Asantibanez\\LaravelEloquentStateMachines\\LaravelEloquentStateMachinesServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Asantibanez\\LaravelEloquentStateMachines\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrés Santibáñez",
+                    "email": "santibanez.andres@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "State machines for your Laravel Eloquent models",
+            "homepage": "https://github.com/asantibanez/laravel-eloquent-state-machines",
+            "keywords": [
+                "asantibanez",
+                "laravel-eloquent-state-machines"
+            ],
+            "time": "2020-12-22T17:24:31+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.0.2",
@@ -921,6 +977,53 @@
                 "watermark"
             ],
             "time": "2019-11-02T09:15:47+00:00"
+        },
+        {
+            "name": "javoscript/laravel-macroable-models",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/javoscript/laravel-macroable-models.git",
+                "reference": "2ade1984f33362c0a304da6352f95c407d5c761f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/javoscript/laravel-macroable-models/zipball/2ade1984f33362c0a304da6352f95c407d5c761f",
+                "reference": "2ade1984f33362c0a304da6352f95c407d5c761f",
+                "shasum": ""
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.6",
+                "phpunit/phpunit": "^8.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Javoscript\\MacroableModels\\MacroableModelsServiceProvider"
+                    ],
+                    "aliases": {
+                        "MacroableModels": "Javoscript\\MacroableModels\\Facades\\MacroableModels"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Javoscript\\MacroableModels\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Javier Ugarte",
+                    "email": "javougarte@gmail.com"
+                }
+            ],
+            "description": "A package for adding methods to Laravel models on the fly",
+            "time": "2020-03-10T01:19:26+00:00"
         },
         {
             "name": "jaybizzle/crawler-detect",
@@ -8828,5 +8931,6 @@
     "platform": {
         "php": "^7.3|^8.0"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
