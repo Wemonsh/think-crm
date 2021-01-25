@@ -26,5 +26,9 @@
         "sass": "^1.32.5",
         "sass-loader": "^8.0.2",
         "tailwindcss": "^2.0.1"
+    },
+    "dependencies": {
+        "bootstrap-table": "^1.18.2",
+        "startbootstrap-sb-admin-2": "^4.1.3"
     }
 }

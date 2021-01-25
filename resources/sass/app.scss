@@ -7,6 +7,10 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@import "~bootstrap-table/dist/bootstrap-table.css";
+
+@import "~startbootstrap-sb-admin-2/scss/sb-admin-2.scss";
+
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
