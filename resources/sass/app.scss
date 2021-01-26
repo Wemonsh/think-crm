@@ -11,6 +11,8 @@
 
 @import "~startbootstrap-sb-admin-2/scss/sb-admin-2.scss";
 
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);

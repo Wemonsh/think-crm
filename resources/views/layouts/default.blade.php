@@ -31,7 +31,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+            <div class="sidebar-brand-text mx-3">{{ config('app.name', 'Laravel') }}</div>
         </a>
 
         <!-- Divider -->
@@ -90,6 +90,12 @@
         <div class="sidebar-heading">
             Документы
         </div>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('document.create') }}">
+                <i class="fas fa-fw fa-file-import"></i>
+                <span>Регистрация документа</span></a>
+        </li>
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item active">

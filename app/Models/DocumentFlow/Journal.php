@@ -18,4 +18,9 @@ class Journal extends Model
         'slug',
         'description'
     ];
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
 }

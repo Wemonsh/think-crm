@@ -29,7 +29,7 @@ class DocumentRepository extends BaseRepository implements DocumentRepositoryInt
     {
         $filters = DocumentFilters::hydrate($params);
 
-        return  $this->model->orderBy($params['sortName'] ?? 'id', $params['sortOrder'] ?? 'asc')
+        return  $this->model->with(['journal'])->orderBy($params['sortName'] ?? 'id', $params['sortOrder'] ?? 'desc')
             ->filterBy($filters)->paginate($params['pageSize'] ?? 50, ['*'], 'pageNumber')->toArray();
     }
 

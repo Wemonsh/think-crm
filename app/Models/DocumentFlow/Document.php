@@ -42,4 +42,9 @@ class Document extends Model implements HasMedia
         'updated_at',
         'deleted_at'
     ];
+
+    public function journal()
+    {
+        return $this->belongsTo(Journal::class);
+    }
 }

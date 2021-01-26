@@ -52,7 +52,10 @@ Route::prefix('document-flow')->group(function () {
         Route::get('/show/{id}', [\App\Http\Controllers\DocumentFlow\DocumentController::class, 'show'])
             ->name('document.show');
 
-        Route::get('/attach/{id}', [\App\Http\Controllers\DocumentFlow\DocumentController::class, 'attach'])
-            ->name('document.attach');
+        Route::get('/show/{id}/file-attach', [\App\Http\Controllers\DocumentFlow\DocumentController::class, 'file_attach'])
+            ->name('document.file-attach');
+
+        Route::post('/show/{id}/file-store', [\App\Http\Controllers\DocumentFlow\DocumentController::class, 'file_store'])
+            ->name('document.file-store');
     });
 });

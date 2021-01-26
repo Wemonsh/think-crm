@@ -5,15 +5,18 @@ namespace App\Http\Controllers\DocumentFlow;
 use App\Http\Controllers\Controller;
 use App\Models\DocumentFlow\Document;
 use App\Repository\DocumentFlow\DocumentRepositoryInterface;
+use App\Repository\DocumentFlow\JournalRepositoryInterface;
 use Illuminate\Http\Request;
 
 class DocumentController extends Controller
 {
     private $documentRepository;
+    private $journalRepository;
 
-    public function __construct(DocumentRepositoryInterface $documentRepository)
+    public function __construct(DocumentRepositoryInterface $documentRepository, JournalRepositoryInterface $journalRepository)
     {
         $this->documentRepository = $documentRepository;
+        $this->journalRepository = $journalRepository;
     }
 
     public function response(Request $request) {
@@ -41,7 +44,11 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        return view('modules.document_flow.document.create');
+        $vars = [
+            'journals' => $this->journalRepository->all()
+        ];
+
+        return view('modules.document_flow.document.create', $vars);
     }
 
     /**
@@ -64,8 +71,11 @@ class DocumentController extends Controller
      */
     public function show(Request $request, int $id)
     {
+        $document = $this->documentRepository->findById($id);
+
         $vars = [
-            'document' => $this->documentRepository->findById($id)
+            'document' => $document,
+            'files' => $document->getMedia('files')
         ];
 
         return view('modules.document_flow.document.show', $vars);
@@ -105,7 +115,23 @@ class DocumentController extends Controller
         //
     }
 
-    public function attach() {
+    public function file_attach($id) {
+        $vars = [
+            'document_id' => $id
+        ];
+
+        return view('modules.document_flow.document.file_attach', $vars);
+    }
+
+    public function file_store(Request $request, int $id) {
+        $document = $this->documentRepository->findById($id);
+
+        //$request->file()['files']
+        //addMultipleMediaFromRequest
+        foreach ($request->file()['files'] as $file) {
+            $document->addMedia($file->path())->usingFileName($file->getClientOriginalName())
+                ->toMediaCollection('files', 'media');
+        }
 
     }
 }
