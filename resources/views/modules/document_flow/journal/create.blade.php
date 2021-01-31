@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.default')
 
 @section('main')
     <form action="{{ route('journal.store') }}" method="post">

@@ -15,7 +15,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        echo 123;
     }
 
     /**

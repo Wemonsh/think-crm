@@ -72,7 +72,7 @@ class DocumentController extends Controller
     public function show(Request $request, int $id)
     {
         $document = $this->documentRepository->findById($id);
-
+        dump($document->status());
         $vars = [
             'document' => $document,
             'files' => $document->getMedia('files')
@@ -133,5 +133,6 @@ class DocumentController extends Controller
                 ->toMediaCollection('files', 'media');
         }
 
+        return redirect()->route('document.show', $id);
     }
 }

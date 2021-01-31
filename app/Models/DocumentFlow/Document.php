@@ -2,6 +2,8 @@
 
 namespace App\Models\DocumentFlow;
 
+use App\StateMachines\DocumentFlow\DocumentStatusStateMachine;
+use Asantibanez\LaravelEloquentStateMachines\Traits\HasStateMachines;
 use Cerbero\QueryFilters\FiltersRecords;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +19,11 @@ class Document extends Model implements HasMedia
     use FiltersRecords;
     use HasMediaTrait;
     use LogsActivity;
+    Use HasStateMachines;
+
+    public $stateMachines = [
+        'status' => DocumentStatusStateMachine::class
+    ];
 
     protected $fillable = [
         'number',

@@ -56,9 +56,9 @@ class JournalController extends Controller
      */
     public function store(Request $request)
     {
-        $this->journalRepository->create($request->toArray());
+        $data = $this->journalRepository->create($request->toArray());
 
-        return redirect()->route('journal.index');
+        return redirect()->route('journal.show', $data->id);
     }
 
     /**
@@ -67,9 +67,11 @@ class JournalController extends Controller
      * @param Journal $journal
      * @return Response
      */
-    public function show(Journal $journal)
+    public function show(Request $request, int $id)
     {
-        //
+        $data = $this->journalRepository->findById($id);
+
+        return view('modules.document_flow.journal.show', ['journal' => $data]);
     }
 
     /**
@@ -78,9 +80,11 @@ class JournalController extends Controller
      * @param Journal $journal
      * @return Response
      */
-    public function edit(Journal $journal)
+    public function edit(Request $request, int $id)
     {
-        //
+        $data = $this->journalRepository->findById($id);
+
+        return view('modules.document_flow.journal.edit', ['journal' => $data]);
     }
 
     /**
@@ -90,9 +94,11 @@ class JournalController extends Controller
      * @param Journal $journal
      * @return Response
      */
-    public function update(Request $request, Journal $journal)
+    public function update(Request $request, int $id)
     {
-        //
+        $data = $this->journalRepository->update($id, $request->toArray());
+
+        return redirect()->route('journal.show', $id);
     }
 
     /**
@@ -101,8 +107,9 @@ class JournalController extends Controller
      * @param Journal $journal
      * @return Response
      */
-    public function destroy(Journal $journal)
+    public function destroy(Request $request, int $id)
     {
-        //
+        $data = $this->journalRepository->deleteById($id);
+        return redirect()->route('journal.index');
     }
 }

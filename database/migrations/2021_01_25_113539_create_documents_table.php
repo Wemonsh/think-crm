@@ -25,6 +25,7 @@ class CreateDocumentsTable extends Migration
             $table->text('content')->nullable();
 
             $table->text('resolution')->nullable();
+            $table->string('status')->nullable();
 
             $table->bigInteger('journal_id')->unsigned()->index()->nullable();
             $table->foreign('journal_id')->references('id')->on('journals');

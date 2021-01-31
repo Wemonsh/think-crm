@@ -13,13 +13,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\MainController::class, 'index'])
+    ->name('index');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+Route::prefix('department')->group(function () {
+    Route::get('/response', [\App\Http\Controllers\Core\DepartmentController::class, 'response'])
+        ->name('department.response');
+
+    Route::get('/', [\App\Http\Controllers\Core\DepartmentController::class, 'index'])
+        ->name('department.index');
+
+    Route::get('/create', [\App\Http\Controllers\Core\DepartmentController::class, 'create'])
+        ->name('department.create');
+
+    Route::post('/store', [\App\Http\Controllers\Core\DepartmentController::class, 'store'])
+        ->name('department.store');
+
+    Route::get('/edit/{id}', [\App\Http\Controllers\Core\DepartmentController::class, 'edit'])
+        ->name('department.edit');
+
+    Route::post('/update/{id}', [\App\Http\Controllers\Core\DepartmentController::class, 'update'])
+        ->name('department.update');
+
+    Route::get('/show/{id}', [\App\Http\Controllers\Core\DepartmentController::class, 'show'])
+        ->name('department.show');
+
+    Route::get('/destroy/{id}', [\App\Http\Controllers\Core\DepartmentController::class, 'destroy'])
+        ->name('department.destroy');
+});
 
 Route::prefix('document-flow')->group(function () {
     Route::prefix('journal')->group(function () {
@@ -34,6 +60,18 @@ Route::prefix('document-flow')->group(function () {
 
         Route::post('/store', [\App\Http\Controllers\DocumentFlow\JournalController::class, 'store'])
             ->name('journal.store');
+
+        Route::get('/edit/{id}', [\App\Http\Controllers\DocumentFlow\JournalController::class, 'edit'])
+            ->name('journal.edit');
+
+        Route::post('/update/{id}', [\App\Http\Controllers\DocumentFlow\JournalController::class, 'update'])
+            ->name('journal.update');
+
+        Route::get('/show/{id}', [\App\Http\Controllers\DocumentFlow\JournalController::class, 'show'])
+            ->name('journal.show');
+
+        Route::get('/destroy/{id}', [\App\Http\Controllers\DocumentFlow\JournalController::class, 'destroy'])
+            ->name('journal.destroy');
     });
 
     Route::prefix('document')->group(function () {
@@ -57,5 +95,31 @@ Route::prefix('document-flow')->group(function () {
 
         Route::post('/show/{id}/file-store', [\App\Http\Controllers\DocumentFlow\DocumentController::class, 'file_store'])
             ->name('document.file-store');
+    });
+
+    Route::prefix('counterparty')->group(function () {
+        Route::get('/response', [\App\Http\Controllers\DocumentFlow\CounterpartyController::class, 'response'])
+            ->name('counterparty.response');
+
+        Route::get('/', [\App\Http\Controllers\DocumentFlow\CounterpartyController::class, 'index'])
+            ->name('counterparty.index');
+
+        Route::get('/create', [\App\Http\Controllers\DocumentFlow\CounterpartyController::class, 'create'])
+            ->name('counterparty.create');
+
+        Route::post('/store', [\App\Http\Controllers\DocumentFlow\CounterpartyController::class, 'store'])
+            ->name('counterparty.store');
+
+        Route::get('/edit/{id}', [\App\Http\Controllers\DocumentFlow\CounterpartyController::class, 'edit'])
+            ->name('counterparty.edit');
+
+        Route::post('/update/{id}', [\App\Http\Controllers\DocumentFlow\CounterpartyController::class, 'update'])
+            ->name('counterparty.update');
+
+        Route::get('/show/{id}', [\App\Http\Controllers\DocumentFlow\CounterpartyController::class, 'show'])
+            ->name('counterparty.show');
+
+        Route::get('/destroy/{id}', [\App\Http\Controllers\DocumentFlow\CounterpartyController::class, 'destroy'])
+            ->name('counterparty.destroy');
     });
 });

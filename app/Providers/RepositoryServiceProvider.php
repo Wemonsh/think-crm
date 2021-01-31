@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Repository\DocumentFlow\CounterpartyRepositoryInterface;
 use App\Repository\DocumentFlow\DocumentRepositoryInterface;
 use App\Repository\DocumentFlow\JournalRepositoryInterface;
 use App\Repository\Eloquent\BaseRepository;
+use App\Repository\Eloquent\DocumentFlow\CounterpartyRepository;
 use App\Repository\Eloquent\DocumentFlow\DocumentRepository;
 use App\Repository\Eloquent\DocumentFlow\JournalRepository;
 use App\Repository\EloquentRepositoryInterface;
@@ -22,6 +24,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(EloquentRepositoryInterface::class, BaseRepository::class);
         $this->app->bind(JournalRepositoryInterface::class, JournalRepository::class);
         $this->app->bind(DocumentRepositoryInterface::class, DocumentRepository::class);
+        $this->app->bind(CounterpartyRepositoryInterface::class, CounterpartyRepository::class);
     }
 
     /**

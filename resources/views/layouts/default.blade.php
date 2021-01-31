@@ -124,7 +124,8 @@
             <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="login.html">Журналы</a>
+                    <a class="collapse-item" href="{{ route('journal.index') }}">Журналы</a>
+                    <a class="collapse-item" href="{{ route('counterparty.index') }}">Контрагенты</a>
                 </div>
             </div>
         </li>

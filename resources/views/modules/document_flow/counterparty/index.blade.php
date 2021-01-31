@@ -3,10 +3,10 @@
 @section('main')
     <div class="row">
         <div class="col-6">
-            <h1 class="h3 mb-3 text-gray-800">Журналы</h1>
+            <h1 class="h3 mb-3 text-gray-800">Контрагенты</h1>
         </div>
         <div class="col-6">
-            <a href="{{ route('journal.create') }}" class="btn btn-primary float-right">Создать</a>
+            <a href="{{ route('counterparty.create') }}" class="btn btn-primary float-right">Создать</a>
         </div>
     </div>
 
@@ -43,11 +43,10 @@
         <thead>
         <tr>
             <th data-field="id" data-width="5" data-width-unit="%">#</th>
-            <th data-field="name" data-width="10" data-width-unit="%">Название</th>
-            <th data-field="slug" data-width="10" data-width-unit="%">Слаг</th>
-            <th data-field="description" data-width="30" data-width-unit="%">Описание</th>
-            <th data-field="created_at" data-width="15" data-width-unit="%">Дата создания</th>
-            <th data-field="updated_at" data-width="15" data-width-unit="%">Дата изменения</th>
+            <th data-field="code" data-width="10" data-width-unit="%">Код</th>
+            <th data-field="name" data-width="30" data-width-unit="%">Название</th>
+            <th data-field="created_at" data-width="20" data-width-unit="%">Дата создания</th>
+            <th data-field="updated_at" data-width="20" data-width-unit="%">Дата изменения</th>
             <th data-formatter="actionFormatter" data-width="15" data-width-unit="%">Действия</th>
         </tr>
         </thead>
@@ -62,15 +61,15 @@
 
         // Ajax запрос
         function ajaxRequest(params) {
-            var url = '{{ route('journal.response') }}'
+            var url = '{{ route('counterparty.response') }}'
             $.get(url + '?' + $.param(params.data)).then(function (res) {
                 params.success(res)
             })
         }
 
         function actionFormatter(value, row) {
-            return '<div class="text-center"><a class="btn btn-primary btn-sm mr-1" href="/document-flow/journal/show/' + row.id + '">Просмотр</a>' +
-                '<a class="btn btn-primary btn-sm" href="/document-flow/journal/edit/' + row.id + '">Править</a></div>';
+            return '<div class="text-center"><a class="btn btn-primary btn-sm mr-1" href="/document-flow/counterparty/show/' + row.id + '">Просмотр</a>' +
+                '<a class="btn btn-primary btn-sm" href="/document-flow/counterparty/edit/' + row.id + '">Править</a></div>';
         }
     </script>
 
