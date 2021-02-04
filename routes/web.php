@@ -20,106 +20,60 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-
-Route::prefix('department')->group(function () {
-    Route::get('/response', [\App\Http\Controllers\Core\DepartmentController::class, 'response'])
-        ->name('department.response');
-
-    Route::get('/', [\App\Http\Controllers\Core\DepartmentController::class, 'index'])
-        ->name('department.index');
-
-    Route::get('/create', [\App\Http\Controllers\Core\DepartmentController::class, 'create'])
-        ->name('department.create');
-
-    Route::post('/store', [\App\Http\Controllers\Core\DepartmentController::class, 'store'])
-        ->name('department.store');
-
-    Route::get('/edit/{id}', [\App\Http\Controllers\Core\DepartmentController::class, 'edit'])
-        ->name('department.edit');
-
-    Route::post('/update/{id}', [\App\Http\Controllers\Core\DepartmentController::class, 'update'])
-        ->name('department.update');
-
-    Route::get('/show/{id}', [\App\Http\Controllers\Core\DepartmentController::class, 'show'])
-        ->name('department.show');
-
-    Route::get('/destroy/{id}', [\App\Http\Controllers\Core\DepartmentController::class, 'destroy'])
-        ->name('department.destroy');
-});
-
 Route::prefix('document-flow')->group(function () {
-    Route::prefix('journal')->group(function () {
-        Route::get('/response', [\App\Http\Controllers\DocumentFlow\JournalController::class, 'response'])
-            ->name('journal.response');
 
-        Route::get('/', [\App\Http\Controllers\DocumentFlow\JournalController::class, 'index'])
-            ->name('journal.index');
-
-        Route::get('/create', [\App\Http\Controllers\DocumentFlow\JournalController::class, 'create'])
-            ->name('journal.create');
-
-        Route::post('/store', [\App\Http\Controllers\DocumentFlow\JournalController::class, 'store'])
-            ->name('journal.store');
-
-        Route::get('/edit/{id}', [\App\Http\Controllers\DocumentFlow\JournalController::class, 'edit'])
-            ->name('journal.edit');
-
-        Route::post('/update/{id}', [\App\Http\Controllers\DocumentFlow\JournalController::class, 'update'])
-            ->name('journal.update');
-
-        Route::get('/show/{id}', [\App\Http\Controllers\DocumentFlow\JournalController::class, 'show'])
-            ->name('journal.show');
-
-        Route::get('/destroy/{id}', [\App\Http\Controllers\DocumentFlow\JournalController::class, 'destroy'])
-            ->name('journal.destroy');
+    Route::prefix('correspondent')->group(function () {
+        Route::get('/response', [\App\Http\Controllers\DocumentCorrespondentController::class, 'response'])->name('correspondent.response');
+        Route::get('/', [\App\Http\Controllers\DocumentCorrespondentController::class, 'index'])->name('correspondent.index');
+        Route::get('/create', [\App\Http\Controllers\DocumentCorrespondentController::class, 'create'])->name('correspondent.create');
+        Route::post('/store', [\App\Http\Controllers\DocumentCorrespondentController::class, 'store'])->name('correspondent.store');
+        Route::get('/edit/{id}', [\App\Http\Controllers\DocumentCorrespondentController::class, 'edit'])->name('correspondent.edit');
+        Route::post('/update/{id}', [\App\Http\Controllers\DocumentCorrespondentController::class, 'update'])->name('correspondent.update');
+        Route::get('/show/{id}', [\App\Http\Controllers\DocumentCorrespondentController::class, 'show'])->name('correspondent.show');
+        Route::get('/destroy/{id}', [\App\Http\Controllers\DocumentCorrespondentController::class, 'destroy'])->name('correspondent.destroy');
     });
 
-    Route::prefix('document')->group(function () {
-        Route::get('/response', [\App\Http\Controllers\DocumentFlow\DocumentController::class, 'response'])
-            ->name('document.response');
-
-        Route::get('/', [\App\Http\Controllers\DocumentFlow\DocumentController::class, 'index'])
-            ->name('document.index');
-
-        Route::get('/create', [\App\Http\Controllers\DocumentFlow\DocumentController::class, 'create'])
-            ->name('document.create');
-
-        Route::post('/store', [\App\Http\Controllers\DocumentFlow\DocumentController::class, 'store'])
-            ->name('document.store');
-
-        Route::get('/show/{id}', [\App\Http\Controllers\DocumentFlow\DocumentController::class, 'show'])
-            ->name('document.show');
-
-        Route::get('/show/{id}/file-attach', [\App\Http\Controllers\DocumentFlow\DocumentController::class, 'file_attach'])
-            ->name('document.file-attach');
-
-        Route::post('/show/{id}/file-store', [\App\Http\Controllers\DocumentFlow\DocumentController::class, 'file_store'])
-            ->name('document.file-store');
+    Route::prefix('importance')->group(function () {
+        Route::get('/response', [\App\Http\Controllers\DocumentImportanceController::class, 'response'])->name('importance.response');
+        Route::get('/', [\App\Http\Controllers\DocumentImportanceController::class, 'index'])->name('importance.index');
+        Route::get('/create', [\App\Http\Controllers\DocumentImportanceController::class, 'create'])->name('importance.create');
+        Route::post('/store', [\App\Http\Controllers\DocumentImportanceController::class, 'store'])->name('importance.store');
+        Route::get('/edit/{id}', [\App\Http\Controllers\DocumentImportanceController::class, 'edit'])->name('importance.edit');
+        Route::post('/update/{id}', [\App\Http\Controllers\DocumentImportanceController::class, 'update'])->name('importance.update');
+        Route::get('/show/{id}', [\App\Http\Controllers\DocumentImportanceController::class, 'show'])->name('importance.show');
+        Route::get('/destroy/{id}', [\App\Http\Controllers\DocumentImportanceController::class, 'destroy'])->name('importance.destroy');
     });
 
-    Route::prefix('counterparty')->group(function () {
-        Route::get('/response', [\App\Http\Controllers\DocumentFlow\CounterpartyController::class, 'response'])
-            ->name('counterparty.response');
+    Route::prefix('type')->group(function () {
+        Route::get('/response', [\App\Http\Controllers\DocumentTypeController::class, 'response'])->name('type.response');
+        Route::get('/', [\App\Http\Controllers\DocumentTypeController::class, 'index'])->name('type.index');
+        Route::get('/create', [\App\Http\Controllers\DocumentTypeController::class, 'create'])->name('type.create');
+        Route::post('/store', [\App\Http\Controllers\DocumentTypeController::class, 'store'])->name('type.store');
+        Route::get('/edit/{id}', [\App\Http\Controllers\DocumentTypeController::class, 'edit'])->name('type.edit');
+        Route::post('/update/{id}', [\App\Http\Controllers\DocumentTypeController::class, 'update'])->name('type.update');
+        Route::get('/show/{id}', [\App\Http\Controllers\DocumentTypeController::class, 'show'])->name('type.show');
+        Route::get('/destroy/{id}', [\App\Http\Controllers\DocumentTypeController::class, 'destroy'])->name('type.destroy');
+    });
 
-        Route::get('/', [\App\Http\Controllers\DocumentFlow\CounterpartyController::class, 'index'])
-            ->name('counterparty.index');
+    Route::prefix('incoming')->group(function () {
+        Route::get('/response', [\App\Http\Controllers\DocumentIncomingController::class, 'response'])->name('incoming.response');
+        Route::get('/', [\App\Http\Controllers\DocumentIncomingController::class, 'index'])->name('incoming.index');
+        Route::get('/create', [\App\Http\Controllers\DocumentIncomingController::class, 'create'])->name('incoming.create');
+        Route::post('/store', [\App\Http\Controllers\DocumentIncomingController::class, 'store'])->name('incoming.store');
+        Route::get('/edit/{id}', [\App\Http\Controllers\DocumentIncomingController::class, 'edit'])->name('incoming.edit');
+        Route::post('/update/{id}', [\App\Http\Controllers\DocumentIncomingController::class, 'update'])->name('incoming.update');
+        Route::get('/show/{id}', [\App\Http\Controllers\DocumentIncomingController::class, 'show'])->name('incoming.show');
+        Route::get('/destroy/{id}', [\App\Http\Controllers\DocumentIncomingController::class, 'destroy'])->name('incoming.destroy');
+    });
 
-        Route::get('/create', [\App\Http\Controllers\DocumentFlow\CounterpartyController::class, 'create'])
-            ->name('counterparty.create');
-
-        Route::post('/store', [\App\Http\Controllers\DocumentFlow\CounterpartyController::class, 'store'])
-            ->name('counterparty.store');
-
-        Route::get('/edit/{id}', [\App\Http\Controllers\DocumentFlow\CounterpartyController::class, 'edit'])
-            ->name('counterparty.edit');
-
-        Route::post('/update/{id}', [\App\Http\Controllers\DocumentFlow\CounterpartyController::class, 'update'])
-            ->name('counterparty.update');
-
-        Route::get('/show/{id}', [\App\Http\Controllers\DocumentFlow\CounterpartyController::class, 'show'])
-            ->name('counterparty.show');
-
-        Route::get('/destroy/{id}', [\App\Http\Controllers\DocumentFlow\CounterpartyController::class, 'destroy'])
-            ->name('counterparty.destroy');
+    Route::prefix('outgoing')->group(function () {
+        Route::get('/response', [\App\Http\Controllers\DocumentOutgoingController::class, 'response'])->name('outgoing.response');
+        Route::get('/', [\App\Http\Controllers\DocumentOutgoingController::class, 'index'])->name('outgoing.index');
+        Route::get('/create', [\App\Http\Controllers\DocumentOutgoingController::class, 'create'])->name('outgoing.create');
+        Route::post('/store', [\App\Http\Controllers\DocumentOutgoingController::class, 'store'])->name('outgoing.store');
+        Route::get('/edit/{id}', [\App\Http\Controllers\DocumentOutgoingController::class, 'edit'])->name('outgoing.edit');
+        Route::post('/update/{id}', [\App\Http\Controllers\DocumentOutgoingController::class, 'update'])->name('outgoing.update');
+        Route::get('/show/{id}', [\App\Http\Controllers\DocumentOutgoingController::class, 'show'])->name('outgoing.show');
+        Route::get('/destroy/{id}', [\App\Http\Controllers\DocumentOutgoingController::class, 'destroy'])->name('outgoing.destroy');
     });
 });
